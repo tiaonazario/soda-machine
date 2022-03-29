@@ -14,7 +14,7 @@ entity pc_machine is
         -- saídas
         d : out std_logic; -- indica fornecimento do refrigerante
         tot_ld : out std_logic;
-        tot_clr : out std_logic;
+        tot_clr : out std_logic
 
     );
 end entity pc_machine;
