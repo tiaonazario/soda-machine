@@ -14,7 +14,7 @@ entity soda_machine is
         a : in std_logic_vector(7 downto 0); -- valor da moeda em centavos
 
         -- saída
-        d : out std_logic; -- indica fornecimento do refrigerante
+        d : out std_logic -- indica fornecimento do refrigerante
     );
 end entity soda_machine;
 
@@ -55,24 +55,24 @@ architecture soda_machine_rtl_arch of soda_machine is
 
 begin
     pc: pc_machine port map(
-        rst
-        clk
-        c
-        tot_lt_s
-        d
-        tot_ld
-        tot_clr
+        rst => rst,
+        clk => clk,
+        c => c,
+        tot_lt_s => tot_lt_s,
+        d => d,
+        tot_ld => tot_ld,
+        tot_clr => tot_clr
     );
     
     
     po: po_machine port map(
-        rst: rst,
-        clk: clk,
-        tot_ld: tot_ld,
-        tot_clr: tot_clr,
-        s: s,
-        a: a,
-        tot_lt_s: tot_lt_s
+        rst => rst,
+        clk => clk,
+        tot_ld => tot_ld,
+        tot_clr => tot_clr,
+        s => s,
+        a => a,
+        tot_lt_s => tot_lt_s
     );
     
     

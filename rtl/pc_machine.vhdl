@@ -21,15 +21,15 @@ end entity pc_machine;
 
 architecture pc_rtl_arch of pc_machine is
 
-type states is (inicio, esperar, somar, fornecer);
+    type states is (inicio, esperar, somar, fornecer);
 
-signal curr_state : states;
-signal next_state : states;
+    signal curr_state: states;
+    signal next_state: states;
     
 begin
     process(clk, rst)
     begin
-        if rst = "1" then
+        if rst = '1' then
             curr_state <= inicio;
         elsif rising_edge(clk) then
             curr_state <= next_state;
@@ -43,9 +43,9 @@ begin
                 next_state <= esperar;
 
             when esperar =>
-                if c = "1" then
+                if c = '1' then
                     next_state <= somar;
-                elsif c = "0" and tot_lt_s = "0" then
+                elsif c = '0' and tot_lt_s = '0' then
                     next_state <= fornecer;
                 else
                     next_state <= esperar;
@@ -57,10 +57,10 @@ begin
             when fornecer =>
                 next_state <= inicio;
         end case;
-  end process;
+    end process;
 
-  d <= "1" when curr_state = fornecer else "0";
-  tot_ld <= "1" when curr_state = somar else "0";
-  tot_clr <= "1" when curr_state = inicio else "0";
+    d <= '1' when curr_state = fornecer else '0';
+    tot_ld <= '1' when curr_state = somar else '0';
+    tot_clr <= '1' when curr_state = inicio else '0';
     
 end architecture pc_rtl_arch;

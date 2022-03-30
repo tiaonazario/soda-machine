@@ -26,19 +26,19 @@ architecture po_rtl_arch of po_machine is
 begin
     process(clk, rst)
     begin
-        if rst = "1" then
+        if rst = '1' then
             tot <= b"00000000";
            
         elsif rising_edge(clk) then
-            if tot_clr = "1" then
+            if tot_clr = '1' then
                 tot <= b"00000000";
-            elsif tot_ld = "1" then
+            elsif tot_ld = '1' then
                 tot <= somar;
             end if;
         end if;
     end process;
 
     somar <= std_logic_vector(unsigned(tot) + unsigned(a));
-    tot_lt_s <= "1" when unsigned(tot) < unsigned(s) else "0";
+    tot_lt_s <= '1' when unsigned(tot) < unsigned(s) else '0';
 
 end architecture po_rtl_arch ; -- po_rtl_arch
