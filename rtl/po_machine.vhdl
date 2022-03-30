@@ -13,12 +13,12 @@ entity po_machine is
         a : in std_logic_vector(7 downto 0); -- valor da moeda em centavos
 
         -- saida
-        tot_lt_s out std_logic
+        tot_lt_s: out std_logic
 
     );
 end entity po_machine;
 
-architecture po_rtl_arch of ent is
+architecture po_rtl_arch of po_machine is
 
     signal tot: std_logic_vector(7 downto 0);
     signal somar: std_logic_vector(7 downto 0);
@@ -41,4 +41,4 @@ begin
     somar <= std_logic_vector(unsigned(tot) + unsigned(a));
     tot_lt_s <= "1" when unsigned(tot) < unsigned(s) else "0";
 
-end po_rtl_arch ; -- po_rtl_arch
+end architecture po_rtl_arch ; -- po_rtl_arch
